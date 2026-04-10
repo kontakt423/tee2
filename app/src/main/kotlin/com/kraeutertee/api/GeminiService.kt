@@ -85,7 +85,7 @@ class GeminiService(private val apiKey: String) {
         var hit429 = false
 
         // Delays: 1. Versuch sofort, 2. nach 15s, 3. nach 30s
-        val retryDelays = listOf(0L, 15_000L, 30_000L)
+        val retryDelays = listOf(0L, 30_000L, 60_000L)
 
         repeat(maxRetries) { attempt ->
             if (attempt > 0) delay(retryDelays.getOrElse(attempt) { 30_000L })
